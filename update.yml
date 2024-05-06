@@ -7,14 +7,14 @@
       apt:
         name: shim-signed
         state: absent
-        force: yes
+        force: all
 
     - name: Remove grub-efi-amd64-signed package
       become: yes
       apt:
         name: grub-efi-amd64-signed
         state: absent
-        force: yes
+        force: all
 
     - name: Purge all packages starting with "grub"
       become: yes
