@@ -12,7 +12,7 @@
 
     - name: Purge all packages starting with "grub"
       become: yes
-      command: apt-get purge grub\*
+      command: apt-get purge grub\* -y
 
     - name: Install grub-efi package
       become: yes
