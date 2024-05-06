@@ -4,17 +4,11 @@
   tasks:
     - name: Remove shim-signed package
       become: yes
-      apt:
-        name: shim-signed
-        state: absent
-        allow_downgrades: yes
+      command: dpkg --remove --force-all shim-signed
 
     - name: Remove grub-efi-amd64-signed package
       become: yes
-      apt:
-        name: grub-efi-amd64-signed
-        state: absent
-        allow_downgrades: yes
+      command: dpkg --remove --force-all grub-efi-amd64-signed
 
     - name: Purge all packages starting with "grub"
       become: yes
