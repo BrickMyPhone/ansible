@@ -1,5 +1,5 @@
 ---
-- hosts: servers
+- hosts: Alis-Linux
   become: true
   become_user: root
   tasks:
