@@ -12,11 +12,7 @@
 
     - name: Purge all packages starting with "grub"
       become: yes
-      apt:
-        name: "{{ item }}"
-        state: absent
-      with_items:
-        - grub*
+      command: apt-get purge grub\*
 
     - name: Install grub-efi package
       become: yes
