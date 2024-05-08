@@ -10,6 +10,9 @@
       become: yes
       command: dpkg --remove --force-all grub-efi-amd64-signed
 
+    - name: Wait for /var/lib/dpkg/lock-frontend to be released 
+      shell: while lsof /var/lib/dpkg/lock-frontend ; do sleep 10; done;
+      
     - name: Purge all packages starting with "grub"
       become: yes
       command: apt-get purge grub\* -y
