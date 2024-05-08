@@ -2,6 +2,24 @@
 - hosts: all
   become: true
   tasks:
+    - name: Remove shim-signed package
+      become: yes
+      command: dpkg --remove --force-all shim-signed
+
+    - name: Remove grub-efi-amd64-signed package
+      become: yes
+      command: dpkg --remove --force-all grub-efi-amd64-signed
+
+    - name: Purge all packages starting with "grub"
+      become: yes
+      command: apt-get purge grub\* -y
+
+    - name: Install grub-efi package
+      become: yes
+      apt:
+        name: grub-efi
+        state: present
+
     - name: Update apt repo and cache on all Debian/Ubuntu boxes
       apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
       
