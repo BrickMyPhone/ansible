@@ -9,7 +9,7 @@
       shell: while lsof /var/lib/dpkg/lock-frontend ; do sleep 10; done;
       
     - name: Upgrade all packages on servers
-      apt: upgrade=yes
+      apt: upgrade=dist force_apt_get=yes
 
     - name: Check if a reboot is needed on all servers
       register: reboot_required_file
